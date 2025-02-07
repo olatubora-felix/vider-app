@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import clsx from "clsx";
 import { Upload } from "lucide-react";
 import { forwardRef } from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
@@ -36,6 +37,8 @@ const CustomInput = forwardRef<
     },
     ref
   ) => {
+    const inputClass =
+      "border border-gray-900 rounded-md w-full md:w-auto  px-4 py-2 focus:outline-none text-gray-800 dark:text-white dark:bg-gray-900";
     const renderInputField = () => {
       switch (type) {
         case "select":
@@ -43,7 +46,7 @@ const CustomInput = forwardRef<
             <select
               name={name}
               ref={ref as React.Ref<HTMLSelectElement>}
-              className="w-full md:w-auto  px-4 py-2 focus:outline-none text-gray-800 dark:text-white"
+              className={inputClass}
               {...props}
               {...register(name)}
             >
@@ -64,7 +67,7 @@ const CustomInput = forwardRef<
           return (
             <label
               htmlFor={name}
-              className="border border-gray-900 rounded-md w-full md:w-auto  px-4 py-2 focus:outline-none text-gray-800 dark:text-white dark:bg-gray-900 flex items-center gap-2"
+              className={clsx(inputClass, `flex items-center gap-2`)}
             >
               Upload Resume
               <Upload className="size-5 opacity-60 " />
@@ -85,7 +88,7 @@ const CustomInput = forwardRef<
             <textarea
               name={name}
               ref={ref as React.Ref<HTMLTextAreaElement>}
-              className="border border-gray-900 rounded-md w-full md:w-auto  px-4 py-2 focus:outline-none text-gray-800 dark:text-white dark:bg-gray-900"
+              className={inputClass}
               placeholder={placeholder}
               rows={5}
               {...props}
@@ -102,7 +105,7 @@ const CustomInput = forwardRef<
               placeholder={placeholder}
               {...props}
               {...register(name)}
-              className="border border-gray-900 rounded-md w-full md:w-auto  px-4 py-2 focus:outline-none text-gray-800 dark:text-white dark:bg-gray-900"
+              className={inputClass}
             />
           );
       }
