@@ -30,8 +30,6 @@ export const JobCard = ({
   publication_date,
   bookmarked,
 }: IJobListings) => {
-  // Dynamically import the ApplyJobForm component with explicit type declaration
-
   const { toggleSaveJob } = useSavedJob();
 
   const MotionCard = motion(Card);
